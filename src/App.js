@@ -9,10 +9,12 @@ const App = () => {
   const Todo = useSelector((state) => state.Todo);
   const { todos } = Todo;
 
-  const [todo, setTodo] = useState();
+  const [todo, setTodo] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(AddTodoAction(todo));
+    setTodo('');
   };
 
   const removeTodo = (t) => {
@@ -35,6 +37,7 @@ const App = () => {
               fontSize: 20,
               outline: 'none',
             }}
+            value={todo}
             onChange={(e) => setTodo(e.target.value)}
           />
           <button
